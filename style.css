@@ -1,8 +1,5 @@
 :root{
-  --rock: url(/assets/rock.png);
-  --paper: url(/assets/paper.png);
-  --sccisor: url(/assets/sccisor.png);
-  --start: url(/assets/start.png);
+  --start: url(/assets/start.webp);
   --result:  rgb(255, 255, 255);
   --lose:  rgb(255, 0, 0);
   --win:  rgb(0, 255, 0);
