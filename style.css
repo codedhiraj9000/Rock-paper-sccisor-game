@@ -1,0 +1,170 @@
+:root{
+  --rock: url(/assets/rock.png);
+  --paper: url(/assets/paper.png);
+  --sccisor: url(/assets/sccisor.png);
+  --start: url(/assets/start.png);
+  --result:  rgb(255, 255, 255);
+  --lose:  rgb(255, 0, 0);
+  --win:  rgb(0, 255, 0);
+  --draw: rgb(0, 155, 255);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  border-radius: 10px;
+  color: #f2f2f2;
+  font-family: serif;
+  text-shadow: 0 0 6px currentColor;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(45deg, black, purple, darkblue);
+  flex-direction: column;
+  background-size: 400%;
+  background-position: left;
+  animation: background 3s linear infinite alternate;
+}
+
+@keyframes background {
+  from{
+    background-position: left;
+  }
+  
+  to{
+    background-position: right;
+  }
+}
+
+.container {
+  height: 85vh;
+  width: 85%;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
+  background: linear-gradient(to bottom, rgb(155, 75, 155), rgba(0, 0, 0, 1.5) 50%, rgb(155, 155, 155));
+  position: relative;
+}
+
+.computer-sec {
+  height: 250px;
+  width: 250px;
+  background: linear-gradient( transparent 80%, rgba(255, 255, 255, 0.5));
+  display: flex;
+  align-items: center;
+  /* justify-content: center; */
+  flex-direction: column;
+  position: absolute;
+  top: 13%;
+  
+}
+
+.button-sec{
+  background: linear-gradient(to bottom, transparent 70%, rgba(0, 255, 255, 0.5));
+  padding: 2%;
+  width: 85%;
+  display: flex;
+  justify-content: center;
+  gap: 5%;
+  position: absolute;
+  bottom: 20px;
+}
+
+button {
+  /* height: 30px; */
+  /* width: 50px; */
+  padding: 2% 2%;
+  text-align: center;
+  background: linear-gradient(to bottom, rgb(55, 155, 255), transparent 85%);
+  border: none;
+  outline: none;
+  color: white;
+  border-radius: 10px;
+  font-size: 145%;
+  transition: all 2s;
+  
+}
+
+.computer {
+  background: var(--start);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  filter: drop-shadow(0 0 5px white);
+  height: 70%;
+  width: 70%;
+  /* animation: computer 1s linear infinite  */;
+}
+
+@keyframes computer {
+  0%{
+    background: var(--rock);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+  
+  50%{
+    background: var(--paper);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+  
+  100% {
+    background: var(--sccisor);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+}
+
+.result {
+  position: absolute;
+  bottom: 25%;
+  padding: 0px 10px;
+  /* z-index: 99; */
+  background: linear-gradient(to bottom, transparent 70%, var(--result));
+}
+
+.result h3 {
+  text-align: center;
+}
+
+button:hover {
+  background: linear-gradient(to bottom, rgb(255, 155, 0), transparent 85%);
+}
+
+.animation {
+  animation: computer 1s linear infinite;
+}
+
+.result-win{
+  background: linear-gradient(to bottom, transparent 70%, var(--win));
+}
+
+.result-lose {
+  background: linear-gradient(to bottom, transparent 70%, var(--lose));
+}
+
+.result-draw {
+  background: linear-gradient(to bottom, transparent 70%, var(--draw));
+}
+
+.rock {
+  background: var(--rock);
+}
+
+.paper {
+  background: var(--paper);
+}
+
+.sccisor {
+  background: var(--sccisor);
+}
