@@ -193,7 +193,7 @@ sccisor.addEventListener('click', () => {
 
 
 window.addEventListener('load', function () {
-    const loadingScreen = document.getElementById('loadingScreen');
+    const loadingScreen = document.querySelector('.loadingScreen');
     const content = document.querySelector('.content');
 
     // Simulate a delay (e.g., 3 seconds) for demonstration
