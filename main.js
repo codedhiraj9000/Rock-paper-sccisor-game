@@ -194,15 +194,15 @@ sccisor.addEventListener('click', () => {
 
 window.addEventListener('load', function () {
     const loadingScreen = document.querySelector('.loadingScreen');
-    const content = document.querySelector('.content');
+    const content = document.querySelector('.container');
 
-    // // Simulate a delay (e.g., 3 seconds) for demonstration
-    // setTimeout(function () {
-    //     loadingScreen.style.opacity = '0';
-    //     loadingScreen.addEventListener('transitionend', function () {
-    //         loadingScreen.style.display = 'none';
-    //     });
+    // Simulate a delay (e.g., 3 seconds) for demonstration
+    setTimeout(function () {
+        loadingScreen.style.opacity = '0';
+        loadingScreen.addEventListener('transitionend', function () {
+            loadingScreen.style.display = 'none';
+        });
         
-    //     content.style.display = 'block';
-    // }, 3000); // Change the time as needed
+        content.style.display = 'flex';
+    }, 3000); // Change the time as needed
 });
