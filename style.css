@@ -4,6 +4,10 @@
   --lose:  rgb(255, 0, 0);
   --win:  rgb(0, 255, 0);
   --draw: rgb(0, 155, 255);
+  --startDisplay: linear-gradient(transparent 80%, rgba(255, 255, 255, 0.5));
+  --winDisplay: linear-gradient(transparent 80%, rgba(0, 255, 0, 0.5));
+  --loseDisplay: linear-gradient(transparent 80%, rgba(255, 0, 0, 0.5));
+  --tieDisplay: linear-gradient(transparent 80%, rgba(0, 255, 255, 0.5));
 }
 
 * {
@@ -15,6 +19,7 @@
   font-family: serif;
   text-shadow: 0 0 6px currentColor;
   transition: all 1s;
+  text-align: center;
 }
 
 body {
@@ -53,7 +58,7 @@ body {
 .computer-sec {
   height: 250px;
   width: 250px;
-  background: linear-gradient( transparent 80%, rgba(255, 255, 255, 0.5));
+  background: var(--startDisplay);
   display: flex;
   align-items: center;
   /* justify-content: center; */
@@ -135,7 +140,7 @@ button {
   text-align: center;
 }
 
-button:hover {
+button:active {
   background: linear-gradient(to bottom, rgb(255, 155, 0), transparent 85%);
 }
 
@@ -259,7 +264,7 @@ button:hover {
 } 
 
 footer {
-  background: linear-gradient(to bottom, transparent 65%, rgba(0, 147, 232, 0.8));
+  background: linear-gradient(to bottom, transparent 65%, rgba(255, 147, 22, 0.8));
   padding: 5px 20px;
 }
 
@@ -271,4 +276,45 @@ a {
 a:hover {
   text-decoration: underline;
   cursor: pointer;
+}
+
+.win-display {
+  background: var(--winDisplay);
+}
+
+.lose-display{
+  background: var(--loseDisplay);
+}
+
+.tie-display {
+  background: var(--tieDisplay);
+}
+
+@media screen and (max-width: 1000px){
+ .computer-sec {
+   height: 400px;
+   width: 400px;
+ }
+
+}
+
+@media screen and (max-width: 600px){
+  /*nothing cng in there*/
+  
+  h1 {
+    font-size: 25px;
+  }
+  
+  .computer-sec {
+    height: 200px;
+    width: 200px;
+  }
+  
+  .computer-sec h1 {
+    font-size: 15px;
+  }
+  
+  .result h3, h4 {
+    font-size: 15px;
+  }
 }

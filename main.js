@@ -1,70 +1,124 @@
 const rock = document.querySelector("#rock")
 const paper = document.querySelector("#paper")
 const sccisor = document.querySelector("#sccisor")
-const display = document.querySelector(".computer")
+const display = document.querySelector(".computer-sec")
+
 const result = document.querySelector(".result")
 
 let value;
 
-const displayRock = () => {
-  if (display.classList.contains('paper')) {
-    display.classList.remove('paper');
-    display.classList.add('rock');
+const chickWinSccisor = ()=>{
+  if (value == 2 && comValue == 0) {
+    playerLose()
+    // displayRock()
+  } else if (value == 2 && comValue == 1) {
+    playerWin()
+    // displayPaper()
   }
-
-  else if (display.classList.contains('sccisor')) {
-    display.classList.remove('sccisor')
-    display.classList.add('rock')
-  }
-
-  else if (display.classList.contains('computer') && !display.classList.contains('rock') || !display.classList.contains('paper') || !display.classList.contains('sccisor')) {
-    display.classList.add('rock');
-  }
-
+  
   else {
-    alert("an error comes plzz contect with devoloper")
+    draw()
+    // displaySccisor()
   }
 }
 
-const displayPaper = () => {
-  if (display.classList.contains('rock')) {
-    display.classList.remove('rock');
-    display.classList.add('paper');
+const chickWinPaper = ()=>{
+  
+  if (value == 1 && comValue == 2) {
+    playerLose()
+    // displaySccisor();
+  } else if (value == 1 && comValue == 0) {
+    playerWin()
+    // displayRock()
   }
-
-  else if (display.classList.contains('sccisor')) {
-    display.classList.remove('sccisor')
-    display.classList.add('paper')
-  }
-
-  else if (display.classList.contains('computer') && !display.classList.contains('rock') || !display.classList.contains('paper') || !display.classList.contains('sccisor')) {
-    display.classList.add('paper');
-  }
-
+  
   else {
-    alert("an error comes plzz contect with devoloper")
+    draw();
+    // displayPaper()
   }
 }
 
-const displaySccisor = () => {
-  if (display.classList.contains('paper')) {
-    display.classList.remove('paper');
-    display.classList.add('sccisor');
-  }
+const chickWinRock = () => {
+  if (value == 0 && comValue == 1) {
 
-  else if (display.classList.contains('rock')) {
-    display.classList.remove('rock')
-    display.classList.add('sccisor')
-  }
+    setInterval(playerLose(), 500)
+    // displayPaper();
+  } else if (value == 0 && comValue == 2) {
 
-  else if (display.classList.contains('computer') && !display.classList.contains('rock') || !display.classList.contains('paper') || !display.classList.contains('sccisor')) {
-    display.classList.add('sccisor');
+    setInterval(playerWin(), 500)
+    // displaySccisor();
   }
 
   else {
-    alert("an error comes plzz contect with devoloper")
+
+    setInterval(draw(), 500)
+    // displayRock();
   }
 }
+
+const loading = () => {
+  result.innerHTML = `<h3>Loading...</h3>`;
+}
+
+// const displayRock = () => {
+//   if (display.classList.contains('paper')) {
+//     display.classList.remove('paper');
+//     display.classList.add('rock');
+//   }
+
+//   else if (display.classList.contains('sccisor')) {
+//     display.classList.remove('sccisor')
+//     display.classList.add('rock')
+//   }
+
+//   else if (display.classList.contains('computer') && !display.classList.contains('rock') || !display.classList.contains('paper') || !display.classList.contains('sccisor')) {
+//     display.classList.add('rock');
+//   }
+
+//   else {
+//     alert("an error comes plzz contect with devoloper")
+//   }
+// }
+
+// const displayPaper = () => {
+//   if (display.classList.contains('rock')) {
+//     display.classList.remove('rock');
+//     display.classList.add('paper');
+//   }
+
+//   else if (display.classList.contains('sccisor')) {
+//     display.classList.remove('sccisor')
+//     display.classList.add('paper')
+//   }
+
+//   else if (display.classList.contains('computer') && !display.classList.contains('rock') || !display.classList.contains('paper') || !display.classList.contains('sccisor')) {
+//     display.classList.add('paper');
+//   }
+
+//   else {
+//     alert("an error comes plzz contect with devoloper")
+//   }
+// }
+
+// const displaySccisor = () => {
+//   if (display.classList.contains('paper')) {
+//     display.classList.remove('paper');
+//     display.classList.add('sccisor');
+//   }
+
+//   else if (display.classList.contains('rock')) {
+//     display.classList.remove('rock')
+//     display.classList.add('sccisor')
+//   }
+
+//   else if (display.classList.contains('computer') && !display.classList.contains('rock') || !display.classList.contains('paper') || !display.classList.contains('sccisor')) {
+//     display.classList.add('sccisor');
+//   }
+
+//   else {
+//     alert("an error comes plzz contect with devoloper")
+//   }
+// }
 
 const computerInputFunc = () => {
   for (i = 0; i <= 10; i++) {
@@ -76,19 +130,25 @@ const computerInputFunc = () => {
 
 const playerWin = () => {
   result.innerHTML = `<h3>ah! You Win congratulations</h3>`;
-  result.style.background = `linear-gradient(to bottom, transparent 70%, var(--win));`
+  result.style.background = `linear-gradient(to bottom, transparent 70%, var(--win));`;
+  // display.style.background = `var(--winDisplay);`
+  
   if (result.classList.contains("result-lose")) {
     result.classList.remove('result-lose');
     result.classList.add('result-win');
-
+    display.classList.remove('lose-display');
+    display.classList.add('win-display')
   }
   else if (result.classList.contains('result-draw')) {
     result.classList.remove('result-draw')
     result.classList.add('result-win');
+    display.classList.remove('tie-display')
+    display.classList.add('win-display')
   }
 
   else if (result.classList.contains('result') && !result.classList.contains('result-win') || !result.classList.contains('result-lose') || !result.classList.contains('result-draw')) {
     result.classList.add('result-win')
+    display.classList.add('win-display')
   }
 
   else {
@@ -101,14 +161,19 @@ const playerLose = () => {
   if (result.classList.contains("result-win")) {
     result.classList.remove('result-win');
     result.classList.add('result-lose');
+    display.classList.remove('win-display')
+    display.classList.add('lose-display')
   }
   else if (result.classList.contains('result-draw')) {
     result.classList.remove('result-draw')
     result.classList.add('result-lose');
+    display.classList.remove('tie-display')
+    display.classList.add('lose-display')
   }
 
   else if (result.classList.contains('result') && !result.classList.contains('result-win') || !result.classList.contains('result-lose') || !result.classList.contains('result-draw')) {
     result.classList.add('result-lose')
+    display.classList.add('lose-display')
   }
 
   else {
@@ -122,14 +187,19 @@ const draw = () => {
   if (result.classList.contains("result-win")) {
     result.classList.remove('result-win');
     result.classList.add('result-draw');
+    display.classList.remove('win-display')
+    display.classList.add('tie-display')
   }
   else if (result.classList.contains('result-lose')) {
     result.classList.remove('result-lose')
     result.classList.add('result-draw');
+    display.classList.remove('lose-display')
+    display.classList.add('tie-display')
   }
 
   else if (result.classList.contains('result') && !result.classList.contains('result-win') || !result.classList.contains('result-lose') || !result.classList.contains('result-draw')) {
     result.classList.add('result-draw')
+    display.classList.add('tie-display')
   }
 
   else {
@@ -141,68 +211,44 @@ const draw = () => {
 
 
 rock.addEventListener('click', () => {
-  const comValue = computerInputFunc();
-  value = 0;
-  if (value == 0 && comValue == 1) {
-    playerLose();
-    // displayPaper();
-  } else if (value == 0 && comValue == 2) {
-    playerWin();
-    // displaySccisor();
-  }
+  //comValue = 0
+  loading()
 
-  else {
-    draw();
-    // displayRock();
-  }
+  comValue = computerInputFunc();
+
+  value = 0;
+  setTimeout(chickWinRock, 500)
+  // chickWinRock();
 })
 
 paper.addEventListener('click', () => {
-  const comValue = computerInputFunc();
+  loading()
+   comValue = computerInputFunc();
   value = 1;
-  if (value == 1 && comValue == 2) {
-    playerLose()
-    // displaySccisor();
-  } else if (value == 1 && comValue == 0) {
-    playerWin()
-    // displayRock()
-  }
-
-  else {
-    draw();
-    // displayPaper()
-  }
+  
+  setTimeout(chickWinPaper, 500)
 })
 
 sccisor.addEventListener('click', () => {
-  const comValue = computerInputFunc();
+  loading()
+   comValue = computerInputFunc();
   value = 2;
-  if (value == 2 && comValue == 0) {
-    playerLose()
-    // displayRock()
-  } else if (value == 2 && comValue == 1) {
-    playerWin()
-    // displayPaper()
-  }
-
-  else {
-    draw()
-    // displaySccisor()
-  }
+  
+  setTimeout(chickWinSccisor, 500)
 })
 
 
-window.addEventListener('load', function () {
-    const loadingScreen = document.querySelector('.loadingScreen');
-    const content = document.querySelector('.container');
+window.addEventListener('load', function() {
+  const loadingScreen = document.querySelector('.loadingScreen');
+  const content = document.querySelector('.container');
 
-    // Simulate a delay (e.g., 3 seconds) for demonstration
-    setTimeout(function () {
-        loadingScreen.style.opacity = '0';
-        loadingScreen.addEventListener('transitionend', function () {
-            loadingScreen.style.display = 'none';
-        });
-        
-        content.style.display = 'flex';
-    }, 3000); // Change the time as needed
+  // Simulate a delay (e.g., 3 seconds) for demonstration
+  setTimeout(function() {
+    loadingScreen.style.opacity = '0';
+    loadingScreen.addEventListener('transitionend', function() {
+      loadingScreen.style.display = 'none';
+    });
+
+    content.style.display = 'flex';
+  }, 3000); // Change the time as needed
 });
