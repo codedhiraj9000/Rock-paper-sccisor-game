@@ -130,7 +130,7 @@ const computerInputFunc = () => {
 
 const playerWin = () => {
   result.innerHTML = `<h3>ah! You Win congratulations</h3>`;
-  result.style.background = `linear-gradient(to bottom, transparent 70%, var(--win));`;
+  // result.style.background = `linear-gradient(to bottom, transparent 70%, var(--win));`;
   // display.style.background = `var(--winDisplay);`
   
   if (result.classList.contains("result-lose")) {
@@ -183,7 +183,7 @@ const playerLose = () => {
 
 const draw = () => {
   result.innerHTML = `<h3>ah! It's a Tie</h3>`;
-  result.style.background = `linear-gradient(to bottom, transparent 70%, var(--draw));`;
+  // result.style.background = `linear-gradient(to bottom, transparent 70%, var(--draw));`;
   if (result.classList.contains("result-win")) {
     result.classList.remove('result-win');
     result.classList.add('result-draw');
@@ -239,16 +239,15 @@ sccisor.addEventListener('click', () => {
 
 
 window.addEventListener('load', function() {
-  const loadingScreen = document.querySelector('.loadingScreen');
-  const content = document.querySelector('.container');
+  const body = document.querySelector('body');
 
   // Simulate a delay (e.g., 3 seconds) for demonstration
   setTimeout(function() {
-    loadingScreen.style.opacity = '0';
-    loadingScreen.addEventListener('transitionend', function() {
-      loadingScreen.style.display = 'none';
-    });
+    body.classList.remove('load');
+    // body.addEventListener('transitionend', function() {
+    //   loadingScreen.style.display = 'none';
+    // });
 
-    content.style.display = 'flex';
+
   }, 3000); // Change the time as needed
 });
